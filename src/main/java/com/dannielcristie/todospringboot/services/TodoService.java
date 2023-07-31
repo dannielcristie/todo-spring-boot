@@ -4,7 +4,6 @@ import com.dannielcristie.todospringboot.entities.Todo;
 import com.dannielcristie.todospringboot.repositories.TodoRepository;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +35,10 @@ public class TodoService {
         Todo entity = todoRepository.getReferenceById(id);
         updateData(entity, obj);
         return todoRepository.save(entity);
+    }
+
+    public void delete(Long id) {
+        todoRepository.deleteById(id);
     }
 
     private void updateData(Todo entity, Todo obj) {
