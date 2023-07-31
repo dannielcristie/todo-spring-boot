@@ -19,4 +19,9 @@ public class TodoService {
         return todoRepository.save(todo);
     }
 
+    public List<Todo> findAll() {
+        Sort sort = Sort.by("priority").descending().and(
+                Sort.by("name").ascending());
+        return todoRepository.findAll(sort);
+    }
 }
