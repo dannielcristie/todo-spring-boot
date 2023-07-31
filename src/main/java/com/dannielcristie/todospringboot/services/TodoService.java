@@ -31,14 +31,14 @@ public class TodoService {
         return obj.get();
     }
 
+    public void delete(Long id) {
+        todoRepository.deleteById(id);
+    }
+
     public Todo update(Long id, Todo obj) {
         Todo entity = todoRepository.getReferenceById(id);
         updateData(entity, obj);
         return todoRepository.save(entity);
-    }
-
-    public void delete(Long id) {
-        todoRepository.deleteById(id);
     }
 
     private void updateData(Todo entity, Todo obj) {
