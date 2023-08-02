@@ -130,13 +130,34 @@ class TodoSpringBootApplicationTests {
 	@Test
 	void testUpdateTodoFailure() {
 		var unExistingId = 1L;
-		var todo = new Todo(unExistingId, "","",false,0);
+		var todo = new Todo(unExistingId, "", "", false, 0);
 		webTestClient
 				.put()
 				.uri("/todos/" + unExistingId)
 				.bodyValue(todo)
 				.exchange()
-				.expectStatus().isBadRequest();
+				.expectStatus().isNotFound();
+	}
+
+	@Sql("/import.sql")
+	@Test
+	void testDeleteTodoSucess() {
+		webTestClient
+				.delete()
+				.uri("/todos/" + TODOS.get(0).getId())
+				.exchange()
+				.expectStatus().isNoContent();
+	}
+
+	@Test
+	void testDeleteTodoFailure() {
+		var unExistingId = 1L;
+
+		webTestClient
+				.delete()
+				.uri("/todos/" + unExistingId)
+				.exchange()
+				.expectStatus().isNotFound();
 	}
 
 }
