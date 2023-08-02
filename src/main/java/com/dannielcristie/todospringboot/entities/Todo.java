@@ -31,6 +31,14 @@ public class Todo {
         this.priority = priority;
     }
 
+    public Todo(Long id, @NotBlank String name, @NotBlank String description, Boolean done, Integer priority) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.done = done;
+        this.priority = priority;
+    }
+
     public Long getId() {
         return id;
     }
