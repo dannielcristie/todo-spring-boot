@@ -1,5 +1,7 @@
 package com.dannielcristie.todospringboot.entities;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -78,4 +80,11 @@ public class Todo {
     public void setPriority(Integer priority) {
         this.priority = priority;
     }
+
+  
+    @Override
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(obj, this);
+    }
+
 }

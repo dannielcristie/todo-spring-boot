@@ -1,1 +1,1 @@
-TRUNCATE TABLE todos;
+TRUNCATE TABLE tb_todos;

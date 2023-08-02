@@ -1,7 +1,7 @@
 package com.dannielcristie.todospringboot;
 
 import static com.dannielcristie.todospringboot.TestConstants.TODO;
-
+import static com.dannielcristie.todospringboot.TestConstants.TODOS;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import com.dannielcristie.todospringboot.entities.Todo;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@Sql("/remove.sql")
 class TodoSpringBootApplicationTests {
 
 	@Autowired
@@ -75,10 +76,34 @@ class TodoSpringBootApplicationTests {
 
 	}
 
+	@Sql("/import.sql")
 	@Test
-	void testFindAll() throws Exception {
-		var obj = TestConstants.TODO;
+	void testFindAllTodosSucess() {
+		webTestClient
+				.get()
+				.uri("/todos")
+				.exchange()
+				.expectStatus().isOk()
+				.expectBody()
+				.jsonPath("$").isArray()
+				.jsonPath("$.length()").isEqualTo(5)
+				.jsonPath("$[0]").isEqualTo(TODOS.get(0))
+				.jsonPath("$[1]").isEqualTo(TODOS.get(1))
+				.jsonPath("$[2]").isEqualTo(TODOS.get(2))
+				.jsonPath("$[3]").isEqualTo(TODOS.get(3))
+				.jsonPath("$[4]").isEqualTo(TODOS.get(4));
+	}
 
+	@Test
+	void testFindAllTodosEmpty() {
+		webTestClient
+				.get()
+				.uri("/todos")
+				.exchange()
+				.expectStatus().isOk()
+				.expectBody()
+				.jsonPath("$").isArray()
+				.jsonPath("$.length()").isEqualTo(0);
 	}
 
 }
