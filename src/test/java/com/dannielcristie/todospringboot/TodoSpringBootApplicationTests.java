@@ -106,4 +106,37 @@ class TodoSpringBootApplicationTests {
 				.jsonPath("$.length()").isEqualTo(0);
 	}
 
+	@Sql("/import.sql")
+	@Test
+	void testUpdateTodoSucess() {
+		var todo = new Todo(TODO.getId(), TODO.getName() + "new", TODO.getDescription() + "new", !TODO.getDone(),
+				TODO.getPriority() - 1);
+
+		webTestClient
+				.put()
+				.uri("/todos/" + TODO.getId())
+				.bodyValue(todo)
+				.exchange()
+				.expectStatus().isOk()
+				.expectBody()
+				.jsonPath("$.length()").isEqualTo(5)
+				.jsonPath("$.id").isEqualTo(todo.getId())
+				.jsonPath("$.name").isEqualTo(todo.getName())
+				.jsonPath("$.description").isEqualTo(todo.getDescription())
+				.jsonPath("$.done").isEqualTo(todo.getDone())
+				.jsonPath("$.priority").isEqualTo(todo.getPriority());
+	}
+
+	@Test
+	void testUpdateTodoFailure() {
+		var unExistingId = 1L;
+		var todo = new Todo(unExistingId, "","",false,0);
+		webTestClient
+				.put()
+				.uri("/todos/" + unExistingId)
+				.bodyValue(todo)
+				.exchange()
+				.expectStatus().isBadRequest();
+	}
+
 }

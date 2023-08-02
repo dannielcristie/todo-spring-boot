@@ -49,6 +49,7 @@ public class TodoService {
     private void updateData(Todo entity, Todo obj) {
         entity.setName(obj.getName());
         entity.setDescription(obj.getDescription());
+        entity.setPriority(obj.getPriority());
         entity.setDone(obj.getDone());
     }
 
