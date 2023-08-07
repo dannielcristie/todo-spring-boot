@@ -28,11 +28,11 @@ API para gerenciar tarefas (CRUD) que faz parte [desse desafio](https://github.c
 - Clonar repositório git
 - Construir o projeto:
 ```
-$ ./mvnw clean package
+./mvnw clean package
 ```
 - Executar a aplicação:
 ```
-$ java -jar target/todo-spring-boot-0.0.1-SNAPSHOT.jar
+java -jar target/todo-spring-boot-0.0.1-SNAPSHOT.jar
 ```
 
 A API poderá ser acessada em [localhost:8080](http://localhost:8080).
