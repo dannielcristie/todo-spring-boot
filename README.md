@@ -2,11 +2,6 @@
   TODO List
 </h1>
 
-<p align="center">
- <img src="https://img.shields.io/static/v1?label=Youtube&message=@giulianabezerra&color=8257E5&labelColor=000000" alt="@giulianabezerra" />
- <img src="https://img.shields.io/static/v1?label=Tipo&message=Desafio&color=8257E5&labelColor=000000" alt="Desafio" />
-</p>
-
 API para gerenciar tarefas (CRUD) que faz parte [desse desafio](https://github.com/simplify-liferay/desafio-junior-backend-simplify) para pessoas desenvolvedoras backend júnior, que se candidatam para a Simplify.
 
 ## Tecnologias
@@ -19,7 +14,7 @@ API para gerenciar tarefas (CRUD) que faz parte [desse desafio](https://github.c
 
 ## Práticas adotadas
 
-- SOLID, DRY, YAGNI, KISS
+- SOLID, DRY,
 - API REST
 - Consultas com Spring Data JPA
 - Injeção de Dependências
@@ -39,60 +34,21 @@ $ java -jar target/todo-spring-boot-0.0.1-SNAPSHOT.jar
 ```
 
 A API poderá ser acessada em [localhost:8080](http://localhost:8080).
+
 O Swagger poderá ser visualizado em [localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ## API Endpoints
 
-Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [httpie](https://httpie.io):
+The API provides the following endpoints:
 
-- Criar Tarefa 
-```
-$ http POST :8080/todos nome="Todo 1" descricao="Desc Todo 1" prioridade=1
+```markdown
+POST /todos - Criar Tarefa.
 
-[
-  {
-    "descricao": "Desc Todo 1",
-    "id": 1,
-    "nome": "Todo 1",
-    "prioridade": 1,
-    "realizado": false
-  }
-]
-```
+GET /todos/{id} - Listar uma tarefas por id.
 
-- Listar Tarefas
-```
-$ http GET :8080/todos
+GET /todos - Listar todas as tarefas.
 
-[
-  {
-    "descricao": "Desc Todo 1",
-    "id": 1,
-    "nome": "Todo 1",
-    "prioridade": 1,
-    "realizado": false
-  }
-]
-```
+PUT /todos/{id} - Atualizar uma tarefa por id.
 
-- Atualizar Tarefa
-```
-$ http PUT :8080/todos/1 nome="Todo 1 Up" descricao="Desc Todo 1 Up" prioridade=2
-
-[
-  {
-    "descricao": "Desc Todo 1 Up",
-    "id": 1,
-    "nome": "Todo 1 Up",
-    "prioridade": 2,
-    "realizado": false
-  }
-]
-```
-
-- Remover Tarefa
-```
-http DELETE :8080/todos/1
-
-[ ]
+DELETE /todos/{id} - Remover uma tarefa.
 ```
