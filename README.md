@@ -2,6 +2,7 @@
   TODO List
 </h1>
 
+
 API para gerenciar tarefas (CRUD) que faz parte [desse desafio](https://github.com/simplify-liferay/desafio-junior-backend-simplify) para pessoas desenvolvedoras backend júnior, que se candidatam para a Simplify.
 
 ## Tecnologias
@@ -14,12 +15,13 @@ API para gerenciar tarefas (CRUD) que faz parte [desse desafio](https://github.c
 
 ## Práticas adotadas
 
-- SOLID, DRY,
 - API REST
+- SOLID,
 - Consultas com Spring Data JPA
 - Injeção de Dependências
 - Tratamento de respostas de erro
 - Geração automática do Swagger com a OpenAPI 3
+- Teste automatizados
 
 ## Como Executar
 
@@ -52,3 +54,6 @@ PUT /todos/{id} - Atualizar uma tarefa por id.
 
 DELETE /todos/{id} - Remover uma tarefa.
 ```
+
+##
+<a href = "https://www.linkedin.com/in/dannielcristie/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
