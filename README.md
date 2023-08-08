@@ -41,7 +41,6 @@ O Swagger poderá ser visualizado em [localhost:8080/swagger-ui.html](http://loc
 
 ## API Endpoints
 
-The API provides the following endpoints:
 
 ```markdown
 POST /todos - Criar Tarefa.
